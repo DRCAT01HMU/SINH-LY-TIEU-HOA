@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: Hành Trình Kỳ Diệu Của Thức Ăn (Phiên bản tĩnh)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #F0F2F5;
+            color: #334155;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 320px;
+            max-height: 320px;
+            width: 100%;
+            max-width: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 350px;
+            }
+        }
+        .kpi-card {
+            background: linear-gradient(135deg, #24394A 0%, #3a506b 100%);
+            color: white;
+            border-left: 5px solid #00A9E0;
+        }
+        .process-step {
+            border: 2px dashed #F7A823;
+            background-color: #fffbeb;
+        }
+        .process-arrow {
+            align-self: center;
+            font-size: 2.5rem;
+            color: #F7A823;
+            font-weight: 800;
+            margin: 0.5rem 0;
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nutrient-pathway-card {
+            background-color: white;
+            border-top: 4px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .nutrient-pathway-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .carb-card { border-color: #00A9E0; }
+        .protein-card { border-color: #E55252; }
+        .lipid-card { border-color: #F7A823; }
+        
+        .clinical-case-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #00A9E0;
+        }
+        .clinical-case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px -10px rgba(0, 169, 224, 0.3);
+        }
+        .case-title {
+            color: #24394A;
+            font-weight: 800;
+            border-bottom: 2px solid #F7A823;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .case-section-title {
+            font-weight: 700;
+            color: #0077B6;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <header class="bg-gradient-to-r from-[#00A9E0] to-[#0077B6] text-white p-8 text-center shadow-lg sticky top-0 z-50">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-1">Hành Trình Kỳ Diệu Của Thức Ăn</h1>
+        <p class="text-lg md:text-xl font-light">Khám phá Sinh Lý Hệ Tiêu Hóa</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overview" class="mb-16 fade-in-section">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#24394A] mb-3">Bộ Máy Tiêu Hóa: Cỗ Máy Sinh Học Hoàn Hảo</h2>
+                <p class="max-w-3xl mx-auto text-lg">Mỗi ngày, hệ tiêu hóa xử lý khoảng 9 lít dịch, bao gồm thức ăn, đồ uống và các dịch tiết nội sinh. Đây là một quá trình phức tạp được điều khiển chặt chẽ bởi hệ thần kinh và hormon để cung cấp năng lượng cho toàn bộ cơ thể.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-5xl mb-3">⚙️</div>
+                    <h3 class="text-xl font-bold text-[#00A9E0] mb-2">Vận Động</h3>
+                    <p>Nhai, nuốt, nhào trộn và đẩy thức ăn đi dọc ống tiêu hóa.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-5xl mb-3">💧</div>
+                    <h3 class="text-xl font-bold text-[#00A9E0] mb-2">Bài Tiết</h3>
+                    <p>Tiết ra enzym, acid, chất nhầy và hormon để tiêu hóa thức ăn.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-5xl mb-3">🔬</div>
+                    <h3 class="text-xl font-bold text-[#00A9E0] mb-2">Tiêu Hóa</h3>
+                    <p>Phân giải các chất dinh dưỡng phức tạp thành các phân tử đơn giản.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transition-transform transform hover:scale-105">
+                    <div class="text-5xl mb-3">📥</div>
+                    <h3 class="text-xl font-bold text-[#00A9E0] mb-2">Hấp Thu</h3>
+                    <p>Đưa các chất dinh dưỡng, nước và điện giải vào máu và bạch huyết.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="mb-16 fade-in-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#24394A] mb-8 text-center">Dòng Thời Gian Tiêu Hóa</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="text-5xl mb-3">⏳</div>
+                    <h3 class="text-2xl font-bold text-[#24394A]">2-4 giờ</h3>
+                    <p class="text-lg mt-2">Thời gian thức ăn lưu lại trong <strong>Dạ Dày</strong> để được nghiền nhỏ và trộn với acid.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="text-5xl mb-3">🚀</div>
+                    <h3 class="text-2xl font-bold text-[#24394A]">3-5 giờ</h3>
+                    <p class="text-lg mt-2">Thời gian di chuyển qua <strong>Ruột Non</strong>, nơi diễn ra phần lớn quá trình tiêu hóa và hấp thu.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="text-5xl mb-3">🏁</div>
+                    <h3 class="text-2xl font-bold text-[#24394A]">10+ giờ</h3>
+                    <p class="text-lg mt-2">Thời gian ở <strong>Ruột Già</strong> để hấp thu nốt nước và cô đặc chất bã thành phân.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="stomach" class="mb-16 fade-in-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#24394A] mb-8 text-center">Dạ Dày: "Máy Xay" Sinh Học & Bể Chứa Acid</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-center">Các Giai Đoạn Bài Tiết Dịch Vị (1.5 L/ngày)</h3>
+                    <div class="chart-container"><canvas id="gastricSecretionChart"></canvas></div>
+                    <p class="mt-4 text-center">Bài tiết dịch vị được điều hòa qua 3 giai đoạn. Giai đoạn dạ dày, khi thức ăn có mặt, chiếm phần lớn lượng dịch tiết.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-center">Yếu Tố Kích Thích Bài Tiết Acid (HCl)</h3>
+                    <div class="chart-container"><canvas id="hclStimulationChart"></canvas></div>
+                    <p class="mt-4 text-center">Tác dụng hiệp đồng của Acetylcholin, Gastrin và Histamin mạnh hơn nhiều so với tổng tác dụng của từng chất riêng lẻ.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg lg:col-span-2">
+                    <h3 class="text-xl font-bold mb-4 text-center">Hoạt Hóa "Vũ Khí" Tiêu Hóa Protein</h3>
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                        <div class="process-step p-4 rounded-lg text-center">
+                            <h4 class="font-bold text-lg">Tế Bào Chính</h4>
+                            <p>Bài tiết <strong>Pepsinogen</strong></p>
+                        </div>
+                        <div class="process-arrow">+</div>
+                        <div class="process-step p-4 rounded-lg text-center">
+                            <h4 class="font-bold text-lg">Tế Bào Viền</h4>
+                            <p>Bài tiết <strong>HCl</strong> (pH 1.5-3.5)</p>
+                        </div>
+                        <div class="process-arrow">=</div>
+                        <div class="bg-[#00A9E0] text-white p-4 rounded-lg text-center shadow-lg">
+                            <h4 class="font-bold text-lg">Pepsin Hoạt Động</h4>
+                            <p>Bắt đầu phân giải Protein</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="duodenum" class="mb-16 fade-in-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#24394A] mb-8 text-center">Ngã Ba Tá Tràng: Trung Tâm Phối Hợp</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-center">Dịch Tụy: "Kho" Enzym Đa Năng</h3>
+                    <div class="chart-container"><canvas id="pancreaticJuiceChart"></canvas></div>
+                    <p class="mt-4 text-center">CCK kích thích tiết enzym để tiêu hóa, trong khi Secretin kích thích tiết Bicarbonat để trung hòa acid.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-center">Vai Trò Của Muối Mật: "Chất Tẩy Rửa" Sinh Học</h3>
+                     <div class="flex flex-col space-y-4">
+                        <div class="process-step p-4 rounded-lg flex items-center"><div class="text-3xl mr-4">1️⃣</div><div><h4 class="font-bold">Nhũ Tương Hóa</h4><p>Phá vỡ giọt mỡ lớn thành giọt nhỏ, tăng diện tích tiếp xúc cho Lipase.</p></div></div>
+                        <div class="process-arrow">↓</div>
+                        <div class="process-step p-4 rounded-lg flex items-center"><div class="text-3xl mr-4">2️⃣</div><div><h4 class="font-bold">Tạo Hạt Mixen</h4><p>Bao bọc sản phẩm tiêu hóa mỡ (acid béo, monoglycerid) tạo hạt tan trong nước.</p></div></div>
+                        <div class="process-arrow">↓</div>
+                        <div class="process-step p-4 rounded-lg flex items-center"><div class="text-3xl mr-4">3️⃣</div><div><h4 class="font-bold">Vận Chuyển</h4><p>Đưa các sản phẩm tiêu hóa mỡ đến bề mặt tế bào ruột để hấp thu.</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="absorption" class="mb-16 fade-in-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#24394A] mb-2 text-center">Ruột Non: Vùng Đất Hấp Thu Rộng Lớn</h2>
+            <p class="max-w-3xl mx-auto text-lg text-center mb-8">Với diện tích bề mặt tương đương một sân tennis (~250 m²), ruột non là nơi diễn ra sự hấp thu gần như toàn bộ chất dinh dưỡng.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="nutrient-pathway-card carb-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Carbohydrate</h3>
+                    <p class="text-center mb-4">Tinh bột → Đường đơn (Glucose, Fructose)</p>
+                    <div class="text-center text-4xl mb-4">🌾 ➔ 🍬</div>
+                    <ul class="space-y-2">
+                        <li><strong>Glucose:</strong> Đồng vận chuyển với Na+ (SGLT1).</li>
+                        <li><strong>Fructose:</strong> Khuếch tán thuận hóa (GLUT5).</li>
+                        <li><strong>Điểm đến:</strong> Máu tĩnh mạch cửa.</li>
+                    </ul>
+                </div>
+                <div class="nutrient-pathway-card protein-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Protein</h3>
+                    <p class="text-center mb-4">Protein → Acid amin, Di/Tri-peptid</p>
+                    <div class="text-center text-4xl mb-4">🥩 ➔ 💪</div>
+                    <ul class="space-y-2">
+                        <li><strong>Acid amin:</strong> Đồng vận chuyển với Na+.</li>
+                        <li><strong>Di/Tri-peptid:</strong> Đồng vận chuyển với H+ (nhanh hơn).</li>
+                        <li><strong>Điểm đến:</strong> Máu tĩnh mạch cửa.</li>
+                    </ul>
+                </div>
+                <div class="nutrient-pathway-card lipid-card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">Lipid</h3>
+                    <p class="text-center mb-4">Triglycerid → Acid béo, Monoglycerid</p>
+                    <div class="text-center text-4xl mb-4">🥑 ➔ 💧</div>
+                    <ul class="space-y-2">
+                        <li><strong>Hấp thu:</strong> Khuếch tán vào tế bào ruột.</li>
+                        <li><strong>Tái tạo & Đóng gói:</strong> Thành Chylomicron.</li>
+                        <li><strong>Điểm đến:</strong> Hệ bạch huyết.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="liver" class="mb-16 fade-in-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#24394A] mb-8 text-center">Gan: Nhà Máy Hóa Chất Của Cơ Thể</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-center">5 Chức Năng Sống Còn</h3>
+                    <div class="chart-container"><canvas id="liverFunctionsChart"></canvas></div>
+                </div>
+                <div class="kpi-card p-8 rounded-xl shadow-lg text-center flex flex-col justify-center h-full">
+                    <div class="text-6xl font-extrabold text-white">1.5 kg</div>
+                    <div class="text-xl mt-2 text-gray-300">Là cơ quan nội tạng lớn nhất, thực hiện hơn 500 chức năng khác nhau.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="large-intestine" class="mb-16 fade-in-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#24394A] mb-8 text-center">Ruột Già: Người Hàng Xóm Thầm Lặng</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="kpi-card p-6 rounded-xl shadow-lg flex flex-col justify-center text-center">
+                     <div class="text-5xl md:text-6xl font-bold text-white">10¹⁴</div>
+                     <p class="text-lg md:text-xl mt-2 text-gray-300">Vi khuẩn trong ruột già - nhiều hơn số tế bào trong cơ thể!</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-center">Sản Phẩm "Nhà Làm" Từ Hệ Vi Khuẩn</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><span class="text-2xl mr-3">🇰</span> <strong>Vitamin K:</strong> Thiết yếu cho quá trình đông máu.</li>
+                        <li class="flex items-center"><span class="text-2xl mr-3">🅱️</span> <strong>Vitamin nhóm B:</strong> Hỗ trợ chuyển hóa năng lượng.</li>
+                        <li class="flex items-center"><span class="text-2xl mr-3">💨</span> <strong>Khí (CO₂, H₂, CH₄):</strong> Sản phẩm của quá trình lên men chất xơ.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clinical Cases Section -->
+        <section id="clinical-cases" class="mb-16 fade-in-section space-y-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#24394A] mb-8 text-center">Tình Huống Lâm Sàng Tiêu Biểu ✨</h2>
+            
+            <div class="clinical-case-card">
+                <h3 class="text-2xl case-title">Case 1: Loét Hành Tá Tràng do H. pylori</h3>
+                <div class="prose max-w-none text-left">
+                    <p><strong class="case-section-title">Bệnh cảnh:</strong> Một bệnh nhân nam 48 tuổi đến khám vì đau bụng vùng thượng vị âm ỉ, có chu kỳ. Cơn đau thường xuất hiện khoảng 2-3 giờ sau khi ăn hoặc vào ban đêm, và giảm đi khi ăn nhẹ hoặc uống thuốc kháng acid. Bệnh nhân có ợ chua, không sụt cân.</p>
+                    <p><strong class="case-section-title">Chẩn đoán:</strong> Loét hành tá tràng, theo dõi do Helicobacter pylori.</p>
+                    <p><strong class="case-section-title">Phân tích Sinh lý bệnh:</strong></p>
+                    <ul>
+                        <li><strong>Mất cân bằng Tấn công & Bảo vệ:</strong> Loét hình thành khi các yếu tố tấn công (HCl, pepsin) thắng thế các yếu tố bảo vệ (lớp nhầy, bicarbonat).</li>
+                        <li><strong>Vai trò của H. pylori:</strong> Vi khuẩn này sống dưới lớp chất nhầy, sản xuất enzym urease tạo ra amoniac để trung hòa acid xung quanh nó. Tuy nhiên, amoniac và các độc tố khác lại làm tổn thương tế bào niêm mạc, phá vỡ hàng rào bảo vệ. Tình trạng viêm mạn tính do H. pylori cũng kích thích tế bào G ở hang vị tăng tiết gastrin, dẫn đến tăng sản xuất HCl, làm trầm trọng thêm tình trạng loét ở tá tràng.</li>
+                        <li><strong>Tại sao đau sau ăn?</strong> Sau bữa ăn, dạ dày tống vị trấp acid xuống tá tràng, kích thích trực tiếp vào ổ loét gây đau. Việc ăn một chút thức ăn hoặc uống thuốc kháng acid giúp trung hòa tạm thời lượng acid này, làm giảm đau.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="clinical-case-card" style="border-left-color: #E55252;">
+                <h3 class="text-2xl case-title">Case 2: Viêm Tụy Cấp do Sỏi Mật</h3>
+                <div class="prose max-w-none text-left">
+                    <p><strong class="case-section-title">Bệnh cảnh:</strong> Một bệnh nhân nữ 55 tuổi, thể trạng béo, nhập viện vì đau bụng dữ dội, đột ngột vùng thượng vị sau một bữa ăn thịnh soạn nhiều dầu mỡ. Cơn đau lan ra sau lưng, kèm theo nôn ói nhiều. Khám thấy bụng chướng, ấn đau. Xét nghiệm máu cho thấy amylase và lipase tăng rất cao.</p>
+                    <p><strong class="case-section-title">Chẩn đoán:</strong> Viêm tụy cấp do sỏi mật.</p>
+                    <p><strong class="case-section-title">Phân tích Sinh lý bệnh:</strong></p>
+                    <ul>
+                        <li><strong>Cơ chế tắc nghẽn:</strong> Một viên sỏi nhỏ từ túi mật di chuyển xuống và kẹt tại bóng Vater, nơi ống mật chủ và ống tụy cùng đổ vào tá tràng. Điều này gây tắc nghẽn dòng chảy của cả dịch mật và dịch tụy.</li>
+                        <li><strong>Hoạt hóa Enzym sớm:</strong> Dịch tụy bị ứ lại trong các ống tuyến, làm tăng áp lực. Sự ứ đọng này, cùng với các yếu tố khác, đã phá vỡ cơ chế bảo vệ, dẫn đến việc trypsinogen bị hoạt hóa sớm thành trypsin ngay bên trong mô tụy.</li>
+                        <li><strong>Phản ứng dây chuyền "Tự tiêu hóa":</strong> Trypsin hoạt động sẽ kích hoạt một loạt các zymogen khác (chymotrypsinogen, proelastase, phospholipase A2...). Các enzym hoạt động này bắt đầu tiêu hóa chính mô tụy, phá hủy màng tế bào, mạch máu, mô mỡ, gây ra một phản ứng viêm hệ thống dữ dội, hoại tử và phù nề.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="clinical-case-card" style="border-left-color: #F7A823;">
+                <h3 class="text-2xl case-title">Case 3: Kém Hấp Thu Mỡ do Cắt Hồi Tràng</h3>
+                <div class="prose max-w-none text-left">
+                    <p><strong class="case-section-title">Bệnh cảnh:</strong> Một bệnh nhân 30 tuổi, có tiền sử bệnh Crohn, đã trải qua phẫu thuật cắt bỏ 50cm đoạn cuối hồi tràng. Sau phẫu thuật, bệnh nhân thường xuyên đi ngoài phân lỏng, số lượng nhiều, có váng mỡ nổi trên mặt nước, mùi rất khó chịu. Bệnh nhân sụt cân và cảm thấy mệt mỏi.</p>
+                    <p><strong class="case-section-title">Chẩn đoán:</strong> Hội chứng ruột ngắn, kém hấp thu mỡ (phân mỡ - steatorrhea).</p>
+                    <p><strong class="case-section-title">Phân tích Sinh lý bệnh:</strong></p>
+                    <ul>
+                        <li><strong>Gián đoạn Chu trình Ruột-Gan:</strong> Đoạn cuối hồi tràng là vị trí duy nhất có các protein vận chuyển đặc hiệu để tái hấp thu tích cực muối mật. Việc cắt bỏ đoạn ruột này đã làm gián đoạn nghiêm trọng chu trình ruột-gan.</li>
+                        <li><strong>Mất muối mật:</strong> Phần lớn muối mật không được tái hấp thu và bị thải ra ngoài theo phân. Gan có khả năng tổng hợp mới để bù trừ, nhưng không thể theo kịp tốc độ mất mát quá lớn.</li>
+                        <li><strong>Hậu quả:</strong> Nồng độ muối mật trong lòng ruột non giảm xuống dưới mức cần thiết (nồng độ micelle tới hạn). Điều này dẫn đến: (1) Nhũ tương hóa mỡ kém hiệu quả. (2) Không tạo đủ các hạt micelle để vận chuyển sản phẩm tiêu hóa mỡ (acid béo, monoglycerid) đến bề mặt tế bào ruột.</li>
+                        <li><strong>Phân mỡ & Tiêu chảy:</strong> Lượng mỡ lớn không được hấp thu sẽ đi xuống ruột già, bị vi khuẩn phân giải, gây tiêu chảy thẩm thấu. Đồng thời, bệnh nhân cũng bị kém hấp thu các vitamin tan trong mỡ (A, D, E, K).</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="text-center p-8 mt-12 bg-[#24394A] text-white">
+        <p class="font-semibold text-lg">Dữ liệu được biên soạn bởi TEAMDRCAT dựa trên kiến thức chuẩn Y Hà Nội.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) { return label.join(' '); }
+                return label;
+            };
+
+            const sharedChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { font: { size: 14, family: "'Be Vietnam Pro', sans-serif" }, color: '#334155' } },
+                    tooltip: { callbacks: { title: tooltipTitleCallback }, bodyFont: { size: 14, family: "'Be Vietnam Pro', sans-serif" }, titleFont: { size: 16, family: "'Be Vietnam Pro', sans-serif", weight: 'bold' } }
+                }
+            };
+            
+            const colors = { blue: '#00A9E0', orange: '#F7A823', darkBlue: '#24394A', red: '#E55252', green: '#22c55e', lightGray: '#F0F2F5' };
+
+            new Chart(document.getElementById('gastricSecretionChart'), { type: 'doughnut', data: { labels: ['Giai đoạn Đầu (Tâm lý)', 'Giai đoạn Dạ dày (Tại chỗ)', 'Giai đoạn Ruột (Hormon)'], datasets: [{ label: 'Tỷ lệ bài tiết', data: [20, 70, 10], backgroundColor: [colors.orange, colors.blue, colors.darkBlue], borderColor: colors.lightGray, borderWidth: 4 }] }, options: { ...sharedChartOptions } });
+            new Chart(document.getElementById('hclStimulationChart'), { type: 'bar', data: { labels: ['Acetylcholin (ACh)', 'Gastrin', 'Histamin', 'Hiệp đồng 3 chất'], datasets: [{ label: 'Mức độ kích thích bài tiết HCl', data: [20, 25, 15, 100], backgroundColor: [colors.blue, colors.orange, colors.darkBlue, colors.red], borderRadius: 5 }] }, options: { ...sharedChartOptions, scales: { y: { beginAtZero: true, title: { display: true, text: 'Mức độ kích thích (tương đối)' } } }, plugins: { legend: { display: false } } } });
+            new Chart(document.getElementById('pancreaticJuiceChart'), { type: 'bar', data: { labels: ['Tác nhân kích thích'], datasets: [{ label: 'Tiết Enzym (kích thích bởi CCK)', data: [75], backgroundColor: colors.blue, borderRadius: 5 }, { label: 'Tiết Bicarbonat (kích thích bởi Secretin)', data: [25], backgroundColor: colors.orange, borderRadius: 5 }] }, options: { ...sharedChartOptions, indexAxis: 'y', scales: { x: { stacked: true, display: false }, y: { stacked: true, display: false } } } });
+            new Chart(document.getElementById('liverFunctionsChart'), { type: 'radar', data: { labels: ['Chuyển hóa', 'Khử độc', 'Tổng hợp', 'Dự trữ', 'Bài tiết'], datasets: [{ label: 'Hoạt động chức năng của Gan', data: [90, 85, 95, 80, 75], backgroundColor: 'rgba(0, 169, 224, 0.2)', borderColor: colors.blue, pointBackgroundColor: colors.blue, pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: colors.blue }] }, options: { ...sharedChartOptions, scales: { r: { angleLines: { color: 'rgba(0, 0, 0, 0.1)' }, grid: { color: 'rgba(0, 0, 0, 0.1)' }, pointLabels: { font: { size: 14, weight: 'bold' }, color: colors.darkBlue }, ticks: { backdropColor: 'transparent', color: 'transparent' } } } } });
+
+            const faders = document.querySelectorAll('.fade-in-section');
+            const appearOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); appearOnScroll.unobserve(entry.target); } });
+            }, appearOptions);
+            faders.forEach(fader => { appearOnScroll.observe(fader); });
+        });
+    </script>
+</body>
+</html>
